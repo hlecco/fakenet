@@ -185,7 +185,7 @@ pub fn generate_crc_hash(bits: &[u8]) -> Vec<u8> {
     let mut bits_padded = Vec::from(bits);
     bits_padded.extend([0u8; 32]);
     let mut remainder = xor_divide(&bits_padded, &generator);
-    while remainder.len() < generator.len()-1 {
+    while remainder.len() < generator.len() - 1 {
         remainder.insert(0, 0u8);
     }
     remainder
@@ -212,8 +212,7 @@ pub fn recover_from_crc_hash(bits: &[u8]) -> Result<Vec<u8>, String> {
             bits.pop();
         }
         Ok(bits)
-    }
-    else {
+    } else {
         Err(String::from("Falha na verificação por CRC"))
     }
 }
